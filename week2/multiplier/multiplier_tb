@@ -1,0 +1,59 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.NUMERIC_STD.ALL;
+
+entity multiplier_tb is
+end multiplier_tb;
+
+architecture testbench of multiplier_tb is
+    signal DATA_IN  : STD_LOGIC_VECTOR(7 downto 0) := (others => '0');
+    signal POSITION : STD_LOGIC_VECTOR(2 downto 0) := (others => '0');
+    signal DATA_OUT : STD_LOGIC_VECTOR(7 downto 0);
+    
+    component multiplier
+        Port (
+            DATA_IN  : in STD_LOGIC_VECTOR(7 downto 0);
+            POSITION : in STD_LOGIC_VECTOR(2 downto 0);
+            DATA_OUT : out STD_LOGIC_VECTOR(7 downto 0)
+        );
+    end component;
+    
+begin
+    uut: multiplier port map (
+        DATA_IN  => DATA_IN,
+        POSITION => POSITION,
+        DATA_OUT => DATA_OUT
+    );
+    
+    process
+    begin
+        -- Test Case 1: Shift by 0 (No Shift)
+        DATA_IN  <= "00000001";
+        POSITION <= "000";
+        wait for 10 ns;
+        
+        -- Test Case 2: Shift by 1
+        DATA_IN  <= "00000001";
+        POSITION <= "001";
+        wait for 10 ns;
+        
+        -- Test Case 3: Shift by 2
+        DATA_IN  <= "00000001";
+        POSITION <= "010";
+        wait for 10 ns;
+        
+        -- Test Case 4: Shift by 3
+        DATA_IN  <= "00000001";
+        POSITION <= "011";
+        wait for 10 ns;
+        
+        -- Test Case 5: Shift by 7 (Maximum shift)
+        DATA_IN  <= "00000001";
+        POSITION <= "111";
+        wait for 10 ns;
+        
+        -- End Simulation
+        wait;
+    end process;
+    
+end testbench;
