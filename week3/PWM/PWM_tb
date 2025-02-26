@@ -1,0 +1,59 @@
+-------------------------------------------------------------------------
+-- TESTBENCH => What should be tested
+--              How to perform the test
+--              What validates a good test outcome
+-- Component: VHDL test bench for <yourdesign>
+-- Remarks  : 
+-------------------------------------------------------------------------
+
+library IEEE;
+use IEEE.Std_logic_1164.all;
+use IEEE.Numeric_STD.all;
+
+entity PWMGEN_TB is
+end entity PWMGEN_TB;
+
+architecture BENCH of PWMGEN_TB is
+-------------------------------------------
+-- Signals and constants
+-------------------------------------------
+
+signal CLK       : STD_LOGIC := '0';   
+signal RST       : STD_LOGIC := '0';   
+signal power     : STD_LOGIC_VECTOR (15 downto 0);
+signal PWMout    : STD_LOGIC;
+signal PWMerror  : STD_LOGIC;
+signal PWMdir    : STD_LOGIC; 
+
+begin
+-------------------------------------------
+-- clock generator
+-------------------------------------------  
+  CLK <= not CLK after 10 NS;
+
+-------------------------------------------
+-- reset generator
+-------------------------------------------
+
+-------------------------------------------
+-- Concurrent signal assignments
+-------------------------------------------
+
+-------------------------------------------
+-- Sequential processes
+-------------------------------------------
+
+-------------------------------------------
+-- Instantiate the UUT component
+-------------------------------------------
+UUT: entity work.PWMgen
+  port map (
+    CLK        => CLK,
+    RST        => RST,
+    power      => power,
+    PWMout     => PWMout,
+    PWMdir     => PWMdir,
+    PWMerror   => PWMerror
+  );
+
+end architecture BENCH;
