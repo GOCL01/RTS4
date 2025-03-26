@@ -16,7 +16,11 @@ int main()
     std::cout << "New value of num : "  << num << "\n";
     std::cout << "Address of num : "  << &num << "\n";
     
-    int *ptr = &num;  // Declaring a pointer ptr of a int variab
+    int *ptr = &num;  // Declaring a pointer ptr of a int variable 
+
+    // You can also :
+    // int *ptr;
+    // ptr = &num;
     
     //ptr = &num;// ptr stores the address of num (int)
                  // This would be equivalent to int *ptr = &num
