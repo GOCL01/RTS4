@@ -168,6 +168,39 @@ static void taskReadIMU( void *pvParameters )
   }
 }
 
+static void taskCTRL_X( void *pvParameters )
+{
+  float x;
+  int degreesX = 0;
+
+  while (true)
+  {
+    Serial.println("TASK CTRL X: waiting for semaphore...");
+    takeSemaphore(gIMUDataSemaphoreHandleXTask);
+    Serial.println("TASK CTRL X: continue execution...");
+     x = currentIMU_sample.x;
+
+    if (x > +TILT_THRESHOLD)
+    {
+      int degreesX = 0;
+      x = 100 * x;
+      degreesX = map(x, 0, 97, 0, 90);
+      Serial.print("TASK CTRL X: Tilting up ");
+      Serial.print(degreesX);
+      Serial.println("  degrees");
+    }
+    if (x < -TILT_THRESHOLD)
+    {
+      x = 100 * x;
+      degreesX = map(x, 0, -100, 0, 90);
+      Serial.print("TASK CTRL X: Tilting down ");
+      Serial.print(degreesX);
+      Serial.println("  degrees");
+    }
+  }
+}
+  
+
 
 static void taskCTRL_Y( void *pvParameters )
 {
