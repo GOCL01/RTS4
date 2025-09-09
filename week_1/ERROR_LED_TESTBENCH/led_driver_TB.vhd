@@ -26,7 +26,7 @@ begin
     wait;
   end process;
 
-  M: entity work.error_led_driver
+  M: entity work.err_led_driver
   port map (
     PWM_ERR     => PWM_ERR,
     SP_ERR      => SP_ERR,
