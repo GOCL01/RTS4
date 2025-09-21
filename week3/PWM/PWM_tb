@@ -1,9 +1,8 @@
 -------------------------------------------------------------------------
--- TESTBENCH => What should be tested
---              How to perform the test
---              What validates a good test outcome
--- Component: VHDL test bench for <yourdesign>
--- Remarks  : 
+-- TESTBENCH for PWMgen
+-- - Provides clock and reset
+-- - Drives different "power" values to exercise PWM
+-- - Allows observation of PWMout, PWMdir, and PWMerror
 -------------------------------------------------------------------------
 
 library IEEE;
@@ -14,46 +13,65 @@ entity PWMGEN_TB is
 end entity PWMGEN_TB;
 
 architecture BENCH of PWMGEN_TB is
--------------------------------------------
--- Signals and constants
--------------------------------------------
+    -------------------------------------------
+    -- Signals and constants
+    -------------------------------------------
+    signal CLK       : std_logic := '0';   
+    signal RST       : std_logic := '0';   
+    signal power     : std_logic_vector(15 downto 0) := (others => '0');
+    signal PWMout    : std_logic;
+    signal PWMerror  : std_logic;
+    signal PWMdir    : std_logic; 
 
-signal CLK       : STD_LOGIC := '0';   
-signal RST       : STD_LOGIC := '0';   
-signal power     : STD_LOGIC_VECTOR (15 downto 0);
-signal PWMout    : STD_LOGIC;
-signal PWMerror  : STD_LOGIC;
-signal PWMdir    : STD_LOGIC; 
+    constant CLK_PERIOD : time := 20 ns; -- 50 MHz clock
 
 begin
--------------------------------------------
--- clock generator
--------------------------------------------  
-  CLK <= not CLK after 10 NS;
+    -------------------------------------------
+    -- Clock generator
+    -------------------------------------------
+    clk_gen : process
+    begin
+        while now < 2 ms loop  -- run simulation long enough to observe PWM
+            CLK <= '0';
+            wait for CLK_PERIOD/2;
+            CLK <= '1';
+            wait for CLK_PERIOD/2;
+        end loop;
+        wait;
+    end process;
 
--------------------------------------------
--- reset generator
--------------------------------------------
+    -------------------------------------------
+    -- Stimulus process
+    -------------------------------------------
+    stim_proc : process
+    begin
+        -- Apply reset
+        RST <= '1';
+        wait for 5*CLK_PERIOD;
+        RST <= '0';
 
--------------------------------------------
--- Concurrent signal assignments
--------------------------------------------
+        -- EXAMPLE 5% DUTY CYCLE
+        power <= std_logic_vector(to_signed(1000, 16));
+        wait for 200*CLK_PERIOD;
 
--------------------------------------------
--- Sequential processes
--------------------------------------------
+        -- Write different scenarios following above example
 
--------------------------------------------
--- Instantiate the UUT component
--------------------------------------------
-UUT: entity work.PWMgen
-  port map (
-    CLK        => CLK,
-    RST        => RST,
-    power      => power,
-    PWMout     => PWMout,
-    PWMdir     => PWMdir,
-    PWMerror   => PWMerror
-  );
+
+        -- Finish simulation
+        wait;
+    end process;
+
+    -------------------------------------------
+    -- Instantiate the UUT
+    -------------------------------------------
+    UUT: entity work.PWMgen
+        port map (
+            CLK      => CLK,
+            RST      => RST,
+            power    => power,
+            PWMout   => PWMout,
+            PWMdir   => PWMdir,
+            PWMerror => PWMerror
+        );
 
 end architecture BENCH;
