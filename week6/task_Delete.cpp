@@ -17,7 +17,7 @@ static void thread_1(void *pvParameters)
 
      // Delay task execution for 500 milliseconds
      // This allows other tasks to run (non-blocking delay in FreeRTOS)
-     vTaskDelay(500 / portTICK_PERIOD_MS);
+     vTaskDelay(5 / portTICK_PERIOD_MS);
   }
 
   // Delete this task once finished
