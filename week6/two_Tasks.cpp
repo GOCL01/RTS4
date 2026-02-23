@@ -3,37 +3,37 @@
 TaskHandle_t TaskAHandle = NULL;
 TaskHandle_t TaskBHandle = NULL;
 
+/*
+  Task A (Higher priority - priority 2)
+  Prints "High Priority Task" every second.
+*/
 static void TaskA(void *pvParameters)
 {
-  int counter = 0;
-
-  while (1)
-  {
-    counter++;
-    Serial.print("Task A running -> ");
-    Serial.println(counter);
-
-    if (counter == 5)
+    while (1)
     {
-      Serial.println("Task A deleting Task B...");
-      vTaskDelete(TaskBHandle);   // Delete Task B
+        Serial.println("High Priority Task");
+        vTaskDelay(1000 / portTICK_PERIOD_MS);  // Delay for 1 second
     }
-
-    vTaskDelay(1000 / portTICK_PERIOD_MS);
-  }
 }
 
-// TODO : Create TaskB function here
+/*
+  TODO : Task B (Lower priority - priority 1)
+  Prints "Low Priority Task" every 3 seconds.
+*/
+
 
 void setup()
 {
-  Serial.begin(115200);
-  while (!Serial);
+    Serial.begin(115200);
+    while (!Serial);
 
-  xTaskCreate(TaskA, "TaskA", 512, NULL, 1, &TaskAHandle);
-// TODO Create TaskB here
+    // Create Task A (Higher priority - priority 2)
+    xTaskCreate(TaskA, "TaskA", 512, NULL, 2, &TaskAHandle);
 
-  vTaskStartScheduler();
+    // TODO : Create Task B (Lower priority - priority 1)
+    
+
+    vTaskStartScheduler();
 }
 
 void loop() {}
