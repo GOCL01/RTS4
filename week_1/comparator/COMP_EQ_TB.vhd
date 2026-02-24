@@ -18,7 +18,7 @@ end entity COMP_EQ_TB;
 
 architecture test of COMP_EQ_TB is
     -- Component declaration
-    component COMP
+    component COMP_EQ
         port (
             A  : in  std_logic_vector(1 downto 0);
             B  : in  std_logic_vector(1 downto 0);
@@ -33,7 +33,7 @@ architecture test of COMP_EQ_TB is
 
 begin
     -- Instantiate the component
-    UUT: COMP port map (A => A_tb, B => B_tb, EQ => EQ_tb);
+    UUT: COMP_EQ port map (A => A_tb, B => B_tb, EQ => EQ_tb);
 
     -- Test process
     process
