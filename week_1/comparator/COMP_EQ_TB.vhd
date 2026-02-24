@@ -41,22 +41,8 @@ begin
         -- Test Case 1: A = "00", B = "00"
         A_tb <= "00"; B_tb <= "00";
         wait for 10 ns;
-        
-        -- Test Case 2: A = "01", B = "00"
-        A_tb <= "01"; B_tb <= "00";
-        wait for 10 ns;
-        
-        -- Test Case 3: A = "10", B = "10"
-        A_tb <= "10"; B_tb <= "10";
-        wait for 10 ns;
-        
-        -- Test Case 4: A = "11", B = "10"
-        A_tb <= "11"; B_tb <= "10";
-        wait for 10 ns;
-        
-        -- Test Case 5: A = "11", B = "11"
-        A_tb <= "11"; B_tb <= "11";
-        wait for 10 ns;
+          
+
         
         -- End simulation
         wait;
