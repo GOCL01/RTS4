@@ -24,10 +24,10 @@ end MUX_8_TO_1;
 
 architecture combinatory of MUX_8_TO_1 is
 begin 
-
+   -- TODO : Students fix the design
     MUX_EVAL: process(SEL, MUX_IN) is
     begin
-       MUX_OUT <= MUX_IN(to_integer(unsigned(SEL)));
+       MUX_OUT <= MUX_IN(SEL);
     end process MUX_EVAL;
 	 	
  end architecture combinatory;
