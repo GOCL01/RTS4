@@ -1,0 +1,64 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity tb_D_FF_Example is
+-- Testbench has no ports
+end tb_D_FF_Example;
+
+architecture Behavioral of tb_D_FF_Example is
+
+    -- Signals to connect to DUT
+    signal D   : std_logic := '0';
+    signal CLK : std_logic := '0';
+    signal Q   : std_logic;
+
+begin
+
+    -- Instantiate the D flip-flop
+    DUT: entity work.D_FF_Example
+        port map(
+            D   => D,
+            CLK => CLK,
+            Q   => Q
+        );
+
+    -----------------------------------------------------------------
+    -- Clock generation: 10 ns period
+    -----------------------------------------------------------------
+    CLK_process : process
+    begin
+        while true loop
+            CLK <= '0';
+            wait for 5 ns;
+            CLK <= '1';
+            wait for 5 ns;
+        end loop;
+    end process CLK_process;
+
+    -----------------------------------------------------------------
+    -- Stimulus process
+    -----------------------------------------------------------------
+    stim_proc : process
+    begin
+        -- Initial value
+        D <= '0';
+        wait for 12 ns;
+
+        -- Toggle D
+        D <= '1';
+        wait for 10 ns;
+
+        D <= '0';
+        wait for 10 ns;
+
+        D <= '1';
+        wait for 10 ns;
+
+        D <= '0';
+        wait for 10 ns;
+
+        -- Stop simulation
+        wait;
+    end process stim_proc;
+
+end Behavioral;
