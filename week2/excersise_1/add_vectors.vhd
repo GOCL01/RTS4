@@ -1,7 +1,19 @@
+----------------------------------------------------------------------------------
+-- Company: University of Applied Sciences Fontys
+-- 
+-- 
+-- Create Date: 21.06.2023 
+-- Design Name: add_vectors.vhd
+-- Module Name: add_vectors - Behavioral
+-- Project Name: add_vectors
+-- Target Devices: Altera boards
+-- Description: Two-vector adder 
+--              This design is intentionally wrong. Students must fix it 
+----------------------------------------------------------------------------------
+
+
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
--- This design is intentionally wrong 
--- Students must fix it 
 
 entity add_vectors is
     port(
