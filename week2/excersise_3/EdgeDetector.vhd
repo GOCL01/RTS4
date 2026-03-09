@@ -1,3 +1,13 @@
+----------------------------------------------------------------------------------
+-- Company: University of Applied Sciences Fontys
+-- Create Date: 03.09.2026 
+-- Design Name: EdgeDetector.vhd
+-- Module Name: EdgeDetector - Behavioral
+-- Project Name: EdgeDetector
+-- Target Devices: Altera boards
+-- Description: Template to design an edge detector
+----------------------------------------------------------------------------------
+
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
