@@ -11,7 +11,7 @@ end entity D_FF_Example;
 architecture behavioral of D_FF_Example is
 begin 
 
-  -- student adds D-Flip-flop here
+  -- student adds D-Flip-flop design here
 
 	
 end architecture behavioral;
