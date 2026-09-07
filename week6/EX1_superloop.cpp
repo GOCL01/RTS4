@@ -13,10 +13,10 @@ void loop()
 {
   // Task 1: Blink LED
   digitalWrite(LED_BUILTIN, HIGH);
-  delay(500);
+  delay(2500);
 
   digitalWrite(LED_BUILTIN, LOW);
-  delay(500);
+  delay(2500);
 
   // Task 2: Print a message
   Serial.println("Hello from Arduino!");
