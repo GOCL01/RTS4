@@ -39,7 +39,13 @@ begin
     process
     begin
         -- Test Case 1: A = "00", B = "00"
-        A_tb <= "00"; B_tb <= "00";
+        A_tb <= "00"; 
+        B_tb <= "00";
+        wait for 10 ns;
+
+        -- Test Case 2: A = "00", B = "01"
+        A_tb <= "00"; 
+        B_tb <= "01";
         wait for 10 ns;
           
 
