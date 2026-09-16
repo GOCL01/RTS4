@@ -2,7 +2,7 @@
 -- Company: University of Applied Sciences Fontys
 -- Author: GON01 
 -- 
--- Create Date: 21.06.2023 11:02:51
+-- Create Date: 09.16.2026
 -- Design Name: mux_2_to_1.vhd
 -- Module Name: mux_2_to_1 - Behavioral
 -- Project Name: mux_2_to_1
@@ -27,7 +27,8 @@ architecture Behavioral of mux_2_to_1 is
 
 begin
 
-output <= (sel and in1) or (not sel and in2);
+--output <= (sel and in1) or (not sel and in2);
+output <= in1 when sel = '1' else in2;
 
 
 end Behavioral;
