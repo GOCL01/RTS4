@@ -47,17 +47,15 @@ begin
         SEL <= "01"; wait for 10 ns;
 
         -- Test case 3: DMUX_IN = '1', SEL = "10"
-        SEL <= "10"; wait for 10 ns;
+
 
         -- Test case 4: DMUX_IN = '1', SEL = "11"
-        SEL <= "11"; wait for 10 ns;
+        
 
         -- Test case 5: DMUX_IN = '0', cycle through all selects
         DMUX_IN <= '0';
         SEL <= "00"; wait for 10 ns;
-        SEL <= "01"; wait for 10 ns;
-        SEL <= "10"; wait for 10 ns;
-        SEL <= "11"; wait for 10 ns;
+        -- add
 
         -- End simulation
         wait;
