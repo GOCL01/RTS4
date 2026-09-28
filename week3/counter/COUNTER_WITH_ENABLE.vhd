@@ -12,11 +12,14 @@ end entity COUNTER_WITH_ENABLE;
 
 
 architecture behavior of COUNTER_WITH_ENABLE is
--- EXCERCISE 3: INSTEAD OF unsigned, DECLARE sigCnt as INTEGER
+-- EXCERCISE 3 MODEL SIM: INSTEAD OF unsigned, DECLARE sigCnt as INTEGER with these scenarios:
+-- 							a. Constrained integer 0 to 255
+--							b. Constrained integer 0 to 128
 
+	
 signal sigCnt: unsigned(7 downto 0);
 begin 
-   -- EXCERCISE 2 : RUN SIMULATION AND FIND THE PITFALL OF THIS DESIGN
+   -- EXCERCISE 2 MODEL SIM: RUN SIMULATION AND FIND THE PITFALL OF THIS DESIGN
    CNT_EVAL: process(CLK) is
    begin
       if RST = '1' then
@@ -32,7 +35,7 @@ begin
       end if;
    end process CNT_EVAL;
 	
-   -- EXCERCISE 1: PLACE "CNT_OUT <= std_logic_vector(sigCnt);" INSIDE PROCESS
+   -- EXCERCISE 1 QUARTUS : PLACE "CNT_OUT <= std_logic_vector(sigCnt);" INSIDE PROCESS
    -- What the difference is in the generated RTL?	
 
 	CNT_OUT <= std_logic_vector(sigCnt);	 
