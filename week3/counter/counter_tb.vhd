@@ -51,15 +51,13 @@ begin
     stim_proc: process
     begin
         -- Reset the counter
-        RST <= '0';
-        wait for 20 ns;
         RST <= '1';
-        wait for 20 ns;
+        wait for 3 ns;
         RST <= '0';
 		
         -- Enable the counter
         EN <= '1';
-        wait for 100 ns;
+        wait for 6000 ns;
         
         
         -- Stop simulation
