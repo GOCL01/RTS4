@@ -36,7 +36,7 @@ begin
       end if;
    end process CNT_EVAL;
 	
-   -- EXCERCISE 1 QUARTUS : PLACE "CNT_OUT <= std_logic_vector(sigCnt);" INSIDE THE rising_edge(CLK) condition, just before "end if;" (line 34)
+   -- EXCERCISE 1 QUARTUS : PLACE "CNT_OUT <= std_logic_vector(sigCnt);" INSIDE THE rising_edge(CLK) condition, just before "end if;" (line 35)
    -- What the difference is in the generated RTL?	
 
 	CNT_OUT <= std_logic_vector(sigCnt);	 
