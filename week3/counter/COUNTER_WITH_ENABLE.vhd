@@ -15,6 +15,7 @@ architecture behavior of COUNTER_WITH_ENABLE is
 -- EXCERCISE 3 MODEL SIM: INSTEAD OF unsigned, DECLARE sigCnt as INTEGER with these scenarios:
 -- 							a. Constrained integer 0 to 255
 --							b. Constrained integer 0 to 128
+-- 							HINT DO NOT FORGET ALSO TO CHANGE LINE 27 and 42 to match the use of the new data type
 
 	
 signal sigCnt: unsigned(7 downto 0);
