@@ -12,7 +12,7 @@ end entity COUNTER_WITH_ENABLE;
 
 
 architecture behavior of COUNTER_WITH_ENABLE is
--- EXCERCISE 3: INSTEAD OF SIGNAL, DECLARE sigCnt as INTEGER
+-- EXCERCISE 3: INSTEAD OF unsigned, DECLARE sigCnt as INTEGER
 
 signal sigCnt: unsigned(7 downto 0);
 begin 
